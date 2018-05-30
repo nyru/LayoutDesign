@@ -13,14 +13,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigation;
     private Fragment fragments;
-    private FragmentManager fragmentManagers;
+    private FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.inflateMenu(R.menu.bottom_menu);
-        fragmentManagers = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         fragments = new PaisaFragment();
                         break;
                 }
-                final FragmentTransaction transaction = fragmentManagers.beginTransaction();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_container, fragments).commit();
                 return true;
             }

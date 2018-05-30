@@ -12,7 +12,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private BottomNavigationView bottomNavigation;
-    private Fragment fragment;
+    private Fragment fragments;
     private FragmentManager fragmentManagers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,23 +27,23 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id){
                     case R.id.action_search:
-                        fragment = new HomeFragment();
+                        fragments = new HomeFragment();
                         break;
                     case R.id.action_cart:
-                        fragment = new TagFragment();
+                        fragments = new TagFragment();
                         break;
                     case R.id.action_hot_deals:
-                        fragment = new ProfileFragment();
+                        fragments = new ProfileFragment();
                         break;
                     case R.id.paisa:
-                        fragment = new PaisaFragment();
+                        fragments = new PaisaFragment();
                         break;
                     case R.id.money:
-                        fragment = new PaisaFragment();
+                        fragments = new PaisaFragment();
                         break;
                 }
                 final FragmentTransaction transaction = fragmentManagers.beginTransaction();
-                transaction.replace(R.id.main_container, fragment).commit();
+                transaction.replace(R.id.main_container, fragments).commit();
                 return true;
             }
         });
